@@ -34,10 +34,19 @@ class _SoonState extends State<Soon> {
     return Scaffold(
       appBar: AppBar(
         title: Text('COMMING SOON'),
-        backgroundColor: Colors.orangeAccent,
+        actions: [
+          _list.isEmpty
+              ? Indicator(
+                  color: soonColor,
+                )
+              : CircularAvatar()
+        ],
+        backgroundColor: soonColor,
       ),
       body: _list.isEmpty
-          ? Loadig()
+          ? Loadig(
+              color: soonColor,
+            )
           : ListView.builder(
               itemCount: _list.length,
               itemBuilder: (context, index) {

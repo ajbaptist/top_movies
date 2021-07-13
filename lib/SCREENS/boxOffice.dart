@@ -34,10 +34,19 @@ class _BoxOfficeState extends State<BoxOffice> {
     return Scaffold(
       appBar: AppBar(
         title: Text('BOX OFFICE'),
-        backgroundColor: Colors.blue,
+        actions: [
+          _list.isEmpty
+              ? Indicator(
+                  color: boxColor,
+                )
+              : CircularAvatar()
+        ],
+        backgroundColor: boxColor,
       ),
       body: _list.isEmpty
-          ? Loadig()
+          ? Loadig(
+              color: boxColor,
+            )
           : ListView.builder(
               itemCount: _list.length,
               itemBuilder: (context, index) {

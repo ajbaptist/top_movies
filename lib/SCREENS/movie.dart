@@ -14,7 +14,7 @@ class _MovieState extends State<Movie> {
   List _list = [];
 
   Future future() async {
-    String url = "https://imdb-api.com/en/API/Top250Movies/k_p8gwy0a4";
+    String url = "https://imdb-api.com/en/API/Top250Movies/k_lxg4s97e";
     Response response = await dio.get(url);
     var data = response.data;
     setState(() {
@@ -35,10 +35,15 @@ class _MovieState extends State<Movie> {
     return Scaffold(
       appBar: AppBar(
         title: Text('TOP 250 MOVIES'),
-        backgroundColor: Colors.green,
+        actions: [
+          _list.isEmpty ? Indicator(color: movieColor) : CircularAvatar()
+        ],
+        backgroundColor: movieColor,
       ),
       body: _list.isEmpty
-          ? Loadig()
+          ? Loadig(
+              color: movieColor,
+            )
           : ListView.builder(
               itemCount: _list.length,
               itemBuilder: (context, index) {

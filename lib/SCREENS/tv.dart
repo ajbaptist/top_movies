@@ -34,10 +34,13 @@ class _TvState extends State<Tv> {
     return Scaffold(
       appBar: AppBar(
         title: Text('TOP 250 TV'),
-        backgroundColor: Colors.purple.shade400,
+        actions: [_list.isEmpty ? Indicator(color: tvcolor) : CircularAvatar()],
+        backgroundColor: tvcolor,
       ),
       body: _list.isEmpty
-          ? Loadig()
+          ? Loadig(
+              color: tvcolor,
+            )
           : ListView.builder(
               itemCount: _list.length,
               itemBuilder: (context, index) {
